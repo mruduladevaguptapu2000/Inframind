@@ -1,38 +1,57 @@
-# Multimodal Emotion Recognition WebApp
+# D3: Data-Driven Documents
 
-We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
+<a href="https://d3js.org"><img src="https://d3js.org/logo.svg" align="left" hspace="10" vspace="6"></a>
 
-![image](webapp.png)
+**D3** (or **D3.js**) is a JavaScript library for visualizing data using web standards. D3 helps you bring data to life using SVG, Canvas and HTML. D3 combines powerful visualization and interaction techniques with a data-driven approach to DOM manipulation, giving you the full capabilities of modern browsers and the freedom to design the right visual interface for your data.
 
-## How to use it ?
+## Resources
 
-To use the web app :
-- Clone the project locally
-- Go in the WebApp folder
-- Run `$ pip install -r requirements.txt``
-- Launch the app by running `python main.py`
-- Go to http://127.0.0.1:5000/ (or follow the link given in your terminal
+* [API Reference](https://github.com/d3/d3/blob/master/API.md)
+* [Release Notes](https://github.com/d3/d3/releases)
+* [Gallery](https://github.com/d3/d3/wiki/Gallery)
+* [Examples](https://bl.ocks.org/mbostock)
+* [Wiki](https://github.com/d3/d3/wiki)
 
-## How does it work ?
+## Installing
 
-As stated in the project home page, we have defined and trained deep learning models to analyze emotions and psychological traits from video, audio and text inputs.
-The user should be able to click on any of the sections, take the interview, and get a feedback on his performance compared to other people who already took the test.
+If you use npm, `npm install d3`. Otherwise, download the [latest release](https://github.com/d3/d3/releases/latest). The released bundle supports anonymous AMD, CommonJS, and vanilla environments. You can load directly from [d3js.org](https://d3js.org), [CDNJS](https://cdnjs.com/libraries/d3), or [unpkg](https://unpkg.com/d3/). For example:
 
-## Getting the feedback
+```html
+<script src="https://d3js.org/d3.v4.js"></script>
+```
 
-For both the text and the audio, a button will directly allow you to get feedback. A dashboard displays your performance compared to other candidates.
+For the minified version:
 
-For the video, due to restrictions of Flask, we are recording the video input for 45 seconds. After this time, the image will freeze. Simply switch the URL to `/video_dash` instead of `/video1` in the URL bar to go to the dashboard.
+```html
+<script src="https://d3js.org/d3.v4.min.js"></script>
+```
 
-## Organization
+You can also use the standalone D3 microlibraries. For example, [d3-selection](https://github.com/d3/d3-selection):
 
-The organization of the project is the following :
+```html
+<script src="https://d3js.org/d3-selection.v1.js"></script>
+```
 
-- Models : All the pre-trained models used by the WebApp
-- library : The Python scripts that run the emotion detection algorithms
-- static :
-  - CSS : The CSS style sheet and fixed images to display
-  - JS : The JavaScript of the app (D3.js) and the databases that store the information
-- templates : All the HTML pages of the project
-- tmp : Temporary files (i.e. an image from video interview, an audio file or a PDF)
-- main.py : The Flask page that calls the functions and redirects to HTML files
+D3 is written using [ES2015 modules](http://www.2ality.com/2014/09/es6-modules-final.html). Create a [custom bundle using Rollup](https://bl.ocks.org/mbostock/bb09af4c39c79cffcde4), Webpack, or your preferred bundler. To import D3 into an ES2015 application, either import specific symbols from specific D3 modules:
+
+```js
+import {scaleLinear} from "d3-scale";
+```
+
+Or import everything into a namespace (here, `d3`):
+
+```js
+import * as d3 from "d3";
+```
+
+In Node:
+
+```js
+var d3 = require("d3");
+```
+
+You can also require individual modules and combine them into a `d3` object using [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
+
+```js
+var d3 = Object.assign({}, require("d3-format"), require("d3-geo"), require("d3-geo-projection"));
+```
